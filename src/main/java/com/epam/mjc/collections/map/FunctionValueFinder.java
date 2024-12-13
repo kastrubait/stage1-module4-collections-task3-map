@@ -8,11 +8,17 @@ public class FunctionValueFinder {
     public boolean isFunctionValuePresent(List<Integer> sourceList, int requiredValue) {
         Map<Integer, Integer> functionMap = calculateFunctionMap(sourceList);
 
-        return true;
+        return functionMap.containsValue(requiredValue);
     }
 
     private Map<Integer, Integer> calculateFunctionMap(List<Integer> sourceList) {
 
-        return new HashMap<>();
+        Map<Integer, Integer> functionMap = new HashMap<>();
+
+        for (Integer num : sourceList) {
+            functionMap.putIfAbsent(num, 5 * num + 2);
+        }
+
+        return functionMap;
     }
 }
