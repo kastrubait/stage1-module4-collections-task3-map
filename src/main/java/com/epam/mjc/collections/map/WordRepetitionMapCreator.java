@@ -13,13 +13,14 @@ public class WordRepetitionMapCreator {
         for (String word : words)
         {
             String uniqueWord = word.toLowerCase();
-
-                if (wordCountTable.containsKey(uniqueWord))	{
+            if (!uniqueWord.isEmpty()) {
+                if (wordCountTable.containsKey(uniqueWord)) {
                     wordCountTable.replace(uniqueWord, wordCountTable.get(uniqueWord),
-                            wordCountTable.get(uniqueWord).intValue() + 1);
+                            wordCountTable.get(uniqueWord) + 1);
                 } else {
                     wordCountTable.put(uniqueWord, 1);
                 }
+            }
 
         }
         return  wordCountTable;
